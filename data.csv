@@ -1,0 +1,202 @@
+Age,Gender,Symptoms,Disease
+45,0,"chest_pain, shortness_of_breath, sweating, anxiety",Heart Disease
+29,1,"headache, nausea, dizziness",Migraine
+34,0,"fever, cough, body_ache",Flu
+55,1,"thirst, frequent_urination, fatigue",Diabetes
+22,0,"runny_nose, sneezing, watery_eyes",Common Cold
+60,0,"chest_pain, anxiety, sweating",Heart Disease
+41,1,"skin_rash, itching, joint_pain",Fungal Infection
+19,0,"stomach_pain, vomiting, nausea",Gastritis
+30,1,"headache, blurred_vision, nausea",Migraine
+50,0,"fever, cough, shortness_of_breath",Pneumonia
+12,1,"fever, rash, headache",Chickenpox
+65,1,"chest_pain, shortness_of_breath, anxiety",Heart Disease
+27,0,"sneezing, itchy_nose, watery_eyes",Allergy
+38,1,"thirst, weight_loss, blurred_vision",Diabetes
+72,0,"fever, cough, phlegm",Pneumonia
+25,1,"stomach_pain, acidity, bloating",Gastritis
+48,0,"chest_pain, nausea, anxiety",Heart Disease
+33,1,"headache, dizziness, nausea",Migraine
+9,0,"fever, rash, itching",Chickenpox
+58,1,"thirst, frequent_urination, fatigue",Diabetes
+21,0,"runny_nose, cough, headache",Common Cold
+44,1,"skin_rash, redness, itching",Fungal Infection
+67,0,"chest_pain, sweating, shortness_of_breath",Heart Disease
+15,1,"sneezing, watery_eyes, skin_rash",Allergy
+36,0,"fever, sore_throat, fatigue",Flu
+53,1,"stomach_pain, nausea, vomiting",Gastritis
+24,0,"headache, blurred_vision, dizziness",Migraine
+80,1,"shortness_of_breath, chest_pain, anxiety",Heart Disease
+40,0,"thirst, fatigue, blurred_vision",Diabetes
+18,1,"fever, rash, fatigue",Chickenpox
+62,0,"fever, cough, chest_pain",Pneumonia
+31,1,"runny_nose, sneezing, cough",Common Cold
+47,0,"chest_pain, anxiety, nausea",Heart Disease
+28,1,"skin_rash, joint_pain, redness",Fungal Infection
+54,0,"stomach_pain, acidity, vomiting",Gastritis
+26,1,"headache, nausea, dizziness",Migraine
+70,0,"thirst, frequent_urination, weight_loss",Diabetes
+35,1,"fever, body_ache, sore_throat",Flu
+23,0,"sneezing, itchy_nose, watery_eyes",Allergy
+59,1,"chest_pain, shortness_of_breath, sweating",Heart Disease
+42,0,"fever, cough, phlegm",Pneumonia
+16,1,"fever, rash, headache",Chickenpox
+51,0,"stomach_pain, bloating, nausea",Gastritis
+39,1,"headache, blurred_vision",Migraine
+66,0,"chest_pain, anxiety, sweating",Heart Disease
+20,1,"runny_nose, sneezing, headache",Common Cold
+49,0,"thirst, fatigue, weight_loss",Diabetes
+32,1,"skin_rash, itching, joint_pain",Fungal Infection
+56,0,"fever, cough, body_ache",Flu
+14,1,"stomach_pain, acidity, nausea",Gastritis
+52,0,"chest_pain, anxiety, shortness_of_breath",Heart Disease
+29,1,"fever, cough, body_ache",Flu
+16,0,"headache, nausea, dizziness",Migraine
+61,1,"thirst, frequent_urination, fatigue",Diabetes
+43,0,"stomach_pain, acidity, vomiting",Gastritis
+8,1,"fever, rash, itching",Chickenpox
+37,0,"runny_nose, sneezing, cough",Common Cold
+72,1,"fever, cough, shortness_of_breath",Pneumonia
+24,0,"skin_rash, joint_pain, itching",Fungal Infection
+59,1,"chest_pain, nausea, anxiety",Heart Disease
+33,0,"sneezing, watery_eyes, itchy_nose",Allergy
+47,1,"headache, dizziness, blurred_vision",Migraine
+66,0,"thirst, blurred_vision, weight_loss",Diabetes
+19,1,"fever, sore_throat, fatigue",Flu
+13,0,"runny_nose, watery_eyes, sneezing",Common Cold
+54,1,"chest_pain, anxiety, sweating",Heart Disease
+41,0,"stomach_pain, bloating, nausea",Gastritis
+26,1,"skin_rash, redness, itching",Fungal Infection
+78,0,"shortness_of_breath, chest_pain, fatigue",Heart Disease
+31,1,"fever, cough, phlegm",Pneumonia
+5,0,"fever, rash, headache",Chickenpox
+50,1,"thirst, frequent_urination, blurred_vision",Diabetes
+38,0,"headache, nausea, dizziness",Migraine
+22,1,"sneezing, skin_rash, itchy_nose",Allergy
+69,0,"chest_pain, shortness_of_breath, sweating",Heart Disease
+14,1,"runny_nose, cough, headache",Common Cold
+45,0,"fever, body_ache, fatigue",Flu
+28,1,"stomach_pain, vomiting, acidity",Gastritis
+57,0,"thirst, fatigue, frequent_urination",Diabetes
+34,1,"skin_rash, itching, joint_pain",Fungal Infection
+9,0,"fever, rash, fatigue",Chickenpox
+63,1,"chest_pain, dizziness, anxiety",Heart Disease
+21,0,"headache, blurred_vision, dizziness",Migraine
+74,1,"fever, cough, shortness_of_breath",Pneumonia
+40,0,"stomach_pain, acidity, nausea",Gastritis
+11,1,"runny_nose, sneezing, watery_eyes",Common Cold
+82,0,"shortness_of_breath, chest_pain, anxiety",Heart Disease
+36,1,"thirst, weight_loss, fatigue",Diabetes
+27,0,"fever, sore_throat, cough",Flu
+18,1,"sneezing, watery_eyes, itchy_nose",Allergy
+53,0,"chest_pain, sweating, nausea",Heart Disease
+30,1,"skin_rash, redness, itching",Fungal Infection
+67,0,"fever, cough, phlegm",Pneumonia
+49,1,"headache, nausea, blurred_vision",Migraine
+6,0,"fever, rash, itching",Chickenpox
+55,1,"thirst, blurred_vision, frequent_urination",Diabetes
+23,0,"runny_nose, cough, sneezing",Common Cold
+44,1,"stomach_pain, vomiting, bloating",Gastritis
+71,0,"chest_pain, shortness_of_breath, anxiety",Heart Disease
+35,1,"fever, body_ache, fatigue",Flu
+64,0,"chest_pain, shortness_of_breath, nausea",Heart Disease
+20,1,"fever, cough, sore_throat",Flu
+15,0,"headache, nausea, dizziness",Migraine
+58,1,"thirst, frequent_urination, weight_loss",Diabetes
+39,0,"stomach_pain, acidity, bloating",Gastritis
+10,1,"fever, rash, headache",Chickenpox
+32,0,"runny_nose, sneezing, watery_eyes",Common Cold
+77,1,"fever, cough, shortness_of_breath",Pneumonia
+25,0,"skin_rash, itching, redness",Fungal Infection
+51,1,"chest_pain, anxiety, sweating",Heart Disease
+28,0,"sneezing, itchy_nose, skin_rash",Allergy
+42,1,"headache, nausea, blurred_vision",Migraine
+73,0,"thirst, fatigue, blurred_vision",Diabetes
+17,1,"fever, body_ache, fatigue",Flu
+12,0,"runny_nose, cough, headache",Common Cold
+60,1,"chest_pain, sweating, dizziness",Heart Disease
+36,0,"stomach_pain, vomiting, nausea",Gastritis
+23,1,"skin_rash, joint_pain, itching",Fungal Infection
+81,0,"shortness_of_breath, chest_pain, fatigue",Heart Disease
+34,1,"fever, cough, phlegm",Pneumonia
+7,0,"fever, rash, itching",Chickenpox
+56,1,"thirst, frequent_urination, blurred_vision",Diabetes
+41,0,"headache, nausea, dizziness",Migraine
+19,1,"sneezing, watery_eyes, itchy_nose",Allergy
+65,0,"chest_pain, shortness_of_breath, anxiety",Heart Disease
+13,1,"runny_nose, sneezing, cough",Common Cold
+48,0,"fever, sore_throat, body_ache",Flu
+31,1,"stomach_pain, acidity, vomiting",Gastritis
+53,0,"thirst, weight_loss, fatigue",Diabetes
+27,1,"skin_rash, itching, redness",Fungal Infection
+8,0,"fever, rash, fatigue",Chickenpox
+68,1,"chest_pain, nausea, anxiety",Heart Disease
+22,0,"headache, dizziness, blurred_vision",Migraine
+70,1,"fever, cough, chest_pain",Pneumonia
+44,0,"stomach_pain, bloating, acidity",Gastritis
+16,1,"runny_nose, watery_eyes, headache",Common Cold
+79,0,"shortness_of_breath, chest_pain, sweating",Heart Disease
+33,1,"thirst, frequent_urination, fatigue",Diabetes
+26,0,"fever, cough, fatigue",Flu
+21,1,"sneezing, itchy_nose, watery_eyes",Allergy
+54,0,"chest_pain, dizziness, shortness_of_breath",Heart Disease
+29,1,"skin_rash, joint_pain, itching",Fungal Infection
+62,0,"fever, cough, phlegm, shortness_of_breath",Pneumonia
+46,1,"headache, nausea, dizziness",Migraine
+5,0,"fever, rash, headache",Chickenpox
+59,1,"thirst, blurred_vision, frequent_urination",Diabetes
+24,0,"runny_nose, sneezing, watery_eyes",Common Cold
+40,1,"stomach_pain, vomiting, nausea",Gastritis
+74,0,"chest_pain, shortness_of_breath, anxiety",Heart Disease
+37,1,"fever, sore_throat, cough",Flu
+22,0,"fatigue",Normal
+35,1,"headache",Normal
+19,0,"sneezing",Normal
+40,1,"body_ache",Normal
+28,0,"cough",Normal
+55,1,"fatigue",Normal
+12,0,"runny_nose",Normal
+48,1,"headache",Normal
+31,0,"sweating",Normal
+34,0,"acidity",Gastritis
+45,1,"acidity, bloating",Gastritis
+29,0,"stomach_pain",Gastritis
+52,1,"stomach_pain, acidity",Gastritis
+60,1,"chest_pain",Heart Disease
+55,0,"chest_pain, anxiety",Heart Disease
+70,1,"shortness_of_breath",Heart Disease
+65,0,"anxiety, sweating",Heart Disease
+50,0,"frequent_urination",Diabetes
+42,1,"thirst",Diabetes
+60,0,"weight_loss",Diabetes
+55,1,"frequent_urination, thirst",Diabetes
+15,1,"sneezing, watery_eyes",Allergy
+24,0,"itchy_nose",Allergy
+33,1,"skin_rash",Allergy
+18,0,"sneezing, itchy_nose",Allergy
+21,0,"itching, redness",Fungal Infection
+30,1,"skin_rash, itching",Fungal Infection
+44,0,"redness",Fungal Infection
+25,1,"itching",Fungal Infection
+39,0,"joint_pain, skin_rash",Fungal Infection
+28,1,"headache, blurred_vision",Migraine
+35,0,"dizziness",Migraine
+41,1,"nausea, headache",Migraine
+22,0,"blurred_vision",Migraine
+32,1,"headache, nausea",Migraine
+14,0,"runny_nose, cough",Common Cold
+10,1,"sneezing, runny_nose",Common Cold
+8,0,"watery_eyes, cough",Common Cold
+20,1,"runny_nose",Common Cold
+16,0,"cough, sneezing",Common Cold
+24,1,"fever",Flu
+36,0,"fever, body_ache",Flu
+45,1,"sore_throat, fatigue",Flu
+50,0,"fever, cough",Flu
+29,1,"body_ache, fever",Flu
+6,1,"rash, fever",Chickenpox
+8,0,"itching, rash",Chickenpox
+75,1,"shortness_of_breath, phlegm",Pneumonia
+68,0,"chest_pain, phlegm",Pneumonia
+80,1,"cough, shortness_of_breath",Pneumonia
+

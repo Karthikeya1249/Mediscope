@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediScope Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .stats-box {
+            background: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .dashboard-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .chart-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 45%;
+            min-width: 400px;
+        }
+        canvas {
+            max-width: 100%;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>📊 MediScope Live Analytics</h1>
+        <div class="stats-box">Total Patients Processed: {{ total_patients }}</div>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="chart-card">
+            <h3 style="text-align: center; color: #333;">Disease Distribution</h3>
+            <canvas id="diseaseChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3 style="text-align: center; color: #333;">Patients by City</h3>
+            <canvas id="cityChart"></canvas>
+        </div>
+    </div>
+
+    <center>
+        <a href="/" class="back-btn">← Back to Patient Entry</a>
+    </center>
+
+    <script>
+        // Data passed from Python to JavaScript
+        const diseaseLabels = {{ disease_labels | safe }};
+        const diseaseData = {{ disease_data | safe }};
+        
+        const cityLabels = {{ city_labels | safe }};
+        const cityData = {{ city_data | safe }};
+
+        // 1. Render Disease Pie Chart
+        const ctxDisease = document.getElementById('diseaseChart').getContext('2d');
+        new Chart(ctxDisease, {
+            type: 'doughnut',
+            data: {
+                labels: diseaseLabels,
+                datasets: [{
+                    data: diseaseData,
+                    backgroundColor: ['#e74c3c', '#3498db', '#f1c40f', '#2ecc71', '#9b59b6', '#e67e22', '#1abc9c'],
+                }]
+            }
+        });
+
+        // 2. Render City Bar Chart
+        const ctxCity = document.getElementById('cityChart').getContext('2d');
+        new Chart(ctxCity, {
+            type: 'bar',
+            data: {
+                labels: cityLabels,
+                datasets: [{
+                    label: 'Number of Patients',
+                    data: cityData,
+                    backgroundColor: '#3498db',
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

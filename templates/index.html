@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediScope Premium</title>
+    <style>
+        /* === 1. BACKGROUND & LAYOUT === */
+        body {
+            background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed; 
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1; }
+        .container {
+            position: relative; z-index: 2;
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
+            padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            width: 500px; text-align: center;
+        }
+        h1 { color: #2c3e50; margin-bottom: 5px; font-weight: 800; }
+        .subtitle { color: #7f8c8d; margin-bottom: 25px; }
+        
+        /* === FORM INPUTS === */
+        label { text-align: left; display: block; font-weight: bold; color: #34495e; margin-top: 15px; }
+        input, select { width: 100%; padding: 12px; margin-top: 5px; border: 2px solid #ecf0f1; border-radius: 8px; font-size: 15px; outline: none; transition: 0.3s; }
+        input:focus, select:focus { border-color: #3498db; }
+
+        .symptom-box { height: 150px; overflow-y: auto; border: 2px solid #ecf0f1; border-radius: 8px; background: #fff; text-align: left; margin-top: 5px; }
+        .symptom-item { padding: 10px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; align-items: center; }
+        .symptom-item:hover { background: #eaf2f8; }
+        .symptom-item input { width: auto; margin-right: 10px; transform: scale(1.2); }
+
+        button { width: 100%; padding: 15px; margin-top: 25px; border: none; border-radius: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4); transition: transform 0.2s; }
+        button:hover { transform: scale(1.03); }
+
+        /* === MODAL POPUP === */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); animation: fadeIn 0.4s; }
+        .modal-content { background-color: white; margin: 5% auto; padding: 30px; border-radius: 15px; width: 450px; text-align: center; box-shadow: 0 5px 30px rgba(0,0,0,0.3); animation: slideDown 0.4s; position: relative; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; font-weight: bold; color: #aaa; cursor: pointer; }
+        .care-badge { padding: 5px 15px; border-radius: 20px; color: white; font-weight: bold; display: inline-block; margin: 10px 0; }
+        .Self-care { background: #27ae60; }
+        .General { background: #f39c12; }
+        .Specialist { background: #e67e22; }
+        .Emergency { background: #c0392b; }
+
+        /* === HOSPITAL RESULTS === */
+        .hospital-box { background: #f8f9fa; border-left: 5px solid #3498db; padding: 15px; margin-top: 20px; text-align: left; border-radius: 5px; }
+        .hospital-title { font-weight: bold; color: #2980b9; margin-bottom: 5px; display: block; }
+        .hospital-name { font-size: 1.1em; color: #2c3e50; }
+
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        @keyframes slideDown { from {transform: translateY(-50px);} to {transform: translateY(0);} }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <h1>🩺 MediScope</h1>
+        <p class="subtitle">AI-Powered Health & Hospital Advisor</p>
+
+        <form method="POST">
+            <label>Patient Name</label>
+            <input type="text" name="name" required placeholder="Enter Name">
+
+            <div style="display: flex; gap: 15px;">
+                <div style="flex: 1;">
+                    <label>Age</label>
+                    <input type="number" name="age" required>
+                </div>
+                <div style="flex: 1;">
+                    <label>Gender</label>
+                    <select name="gender">
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <label>City (Nearest Location)</label>
+            <input list="city-list" name="city" placeholder="Type to search city..." required autocomplete="off">
+            <datalist id="city-list">
+                {% for city in cities %}
+                    <option value="{{ city }}">
+                {% endfor %}
+            </datalist>
+            <label>Select Symptoms</label>
+            <div class="symptom-box">
+                {% for sym in symptoms %}
+                <div class="symptom-item" onclick="toggleCheckbox(this)">
+                    <input type="checkbox" name="symptoms" value="{{ sym }}">
+                    <span>{{ sym.replace('_', ' ').title() }}</span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Analyze & Find Hospital</button>
+        </form>
+    </div>
+
+    {% if prediction %}
+    <div id="resultModal" class="modal" style="display: block;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <h3 style="color: #555;">Analysis for {{ user_name }}</h3>
+            <h1 style="color: #2c3e50; margin: 10px 0;">{{ prediction }}</h1>
+            
+            <div class="care-badge {{ care_category.split(' ')[0] }}">
+                {{ care_category }}
+            </div>
+
+            <p style="color: #7f8c8d; margin-top: 15px;">"{{ care_advice }}"</p>
+
+            {% if care_category != 'Self-care' %}
+            <div class="hospital-box">
+                <span class="hospital-title">🏥 Recommended Hospital Nearby:</span>
+                <span class="hospital-name">{{ hospital_rec }}</span>
+            </div>
+            {% else %}
+            <div class="hospital-box" style="border-left-color: #27ae60;">
+                <span class="hospital-title">✅ No Hospital Needed:</span>
+                <span class="hospital-name">Safe to recover at home.</span>
+            </div>
+            {% endif %}
+
+            <button onclick="closeModal()" style="margin-top: 20px; background: #34495e;">Close Report</button>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        function toggleCheckbox(div) {
+            const checkbox = div.querySelector('input');
+            if (event.target !== checkbox) {
+                checkbox.checked = !checkbox.checked;
+            }
+        }
+        function closeModal() {
+            document.getElementById('resultModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            var modal = document.getElementById('resultModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
