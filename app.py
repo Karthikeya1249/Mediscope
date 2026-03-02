@@ -2,9 +2,14 @@ from flask import Flask, render_template, request
 import joblib
 import pandas as pd
 import os
-import csv
+from supabase import create_client, Client
 
 app = Flask(__name__)
+
+# === CONNECT TO SUPABASE ===
+SUPABASE_URL = "https://ukwowjufiifjqypkdjm.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVrd293anVmaWlmanF5cHBrZGptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyOTQ3NjEsImV4cCI6MjA4Nzg3MDc2MX0.UqQGmQt138c6uWgTgQ9iWLvnSJFdFeXIWY0dua78zgA"
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # Load AI Models
 model = joblib.load('model.pkl')
@@ -78,17 +83,18 @@ def index():
             else:
                 hospital_rec = "Home rest is recommended. No hospital visit required."
 
-            # === NEW: SAVE TO PATIENT HISTORY CSV ===
-            history_file = 'patient_history.csv'
-            file_exists = os.path.isfile(history_file)
+            # === SAVE TO SUPABASE ===
+            gender_text = 'Female' if gender == 1 else 'Male'
             
-            with open(history_file, 'a', newline='') as f:
-                writer = csv.writer(f)
-                if not file_exists:
-                    writer.writerow(['Name', 'Age', 'Gender', 'City', 'Disease']) # Header
-                
-                gender_text = 'Female' if gender == 1 else 'Male'
-                writer.writerow([user_name, age, gender_text, city, predicted_disease])
+            patient_data = {
+                "name": user_name,
+                "age": age,
+                "gender": gender_text,
+                "city": city,
+                "disease": predicted_disease
+            }
+            
+            supabase.table("patient_records").insert(patient_data).execute()
 
         except Exception as e:
             prediction_text = f"Error: {e}"
@@ -102,29 +108,28 @@ def index():
                            hospital_rec=hospital_rec,
                            user_name=user_name)
 
-# === NEW: ADMIN DASHBOARD ROUTE ===
 @app.route('/dashboard')
 def dashboard():
-    history_file = 'patient_history.csv'
-    
-    if not os.path.exists(history_file):
-        return "<h1>No Data Yet!</h1><p>Please go to the home page and make a prediction first.</p>"
-    
-    # Read the data we've been saving
-    df = pd.read_csv(history_file)
-    
-    # Count how many of each disease
-    disease_counts = df['Disease'].value_counts().to_dict()
-    
-    # Count how many patients from each city
-    city_counts = df['City'].value_counts().to_dict()
-    
-    return render_template('dashboard.html', 
-                           disease_labels=list(disease_counts.keys()), 
-                           disease_data=list(disease_counts.values()),
-                           city_labels=list(city_counts.keys()), 
-                           city_data=list(city_counts.values()),
-                           total_patients=len(df))
+    try:
+        response = supabase.table("patient_records").select("*").execute()
+        data = response.data
+        
+        if not data:
+            return "<h1>No Data Yet!</h1><p>Please make a prediction first.</p>"
+        
+        df = pd.DataFrame(data)
+        
+        disease_counts = df['disease'].value_counts().to_dict()
+        city_counts = df['city'].value_counts().to_dict()
+        
+        return render_template('dashboard.html', 
+                               disease_labels=list(disease_counts.keys()), 
+                               disease_data=list(disease_counts.values()),
+                               city_labels=list(city_counts.keys()), 
+                               city_data=list(city_counts.values()),
+                               total_patients=len(df))
+    except Exception as e:
+        return f"<h1>Error loading dashboard:</h1><p>{e}</p>"
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
