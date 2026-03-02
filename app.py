@@ -7,7 +7,7 @@ from supabase import create_client, Client
 app = Flask(__name__)
 
 # === CONNECT TO SUPABASE ===
-SUPABASE_URL = "https://ukwowjufiifjqypkdjm.supabase.co"
+SUPABASE_URL = "https://ukwowjufiifjqyppkdjm.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVrd293anVmaWlmanF5cHBrZGptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyOTQ3NjEsImV4cCI6MjA4Nzg3MDc2MX0.UqQGmQt138c6uWgTgQ9iWLvnSJFdFeXIWY0dua78zgA"
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
